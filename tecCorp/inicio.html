@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #242933;
+    display: flex;
+    font-family: Poppins;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    border: 0;
+}
+
+.container {
+    background-color: #2F3644;
+    border-radius: 5px;
+    border: 2px solid #3E445B;
+    width: 450px;
+    max-width: 100%;
+}
+
+.header {
+    padding: 30px 40px;
+}
+
+.header h2 {
+    font-weight: 600;
+    color: #ACBAE1;
+    font-size: 30px;
+}
+
+.form {
+    padding: 0 40px 30px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #828CAD;
+}
+
+.form-control input {
+    border: 2px solid #3E445B;
+    border-radius: 5px;
+    outline: 0;
+
+    display: block;
+
+    font-size: 14px;
+
+    width: 100%;
+    padding: 15px;
+}
+
+.form-control.success input {
+    border: 3px solid #4ECA64;
+}
+
+.form-control.error input {
+    border: 3px solid #DB5A5A;
+}
+
+.form-control.error i.img-error {
+    visibility: visible;
+}
+
+.form-control.success i.img-success {
+    visibility: visible;
+}
+
+.form-control.error small{
+    color: #DB5A5A;
+    visibility: visible;
+}
+
+.form-control i {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.form-control small {
+    visibility: hidden;
+    position: absolute;
+    margin-top: 5px;
+    font-size: 14px;
+
+}
+
+.form button {
+    background-color: #6C63FF;
+    border-radius: 5px;
+    color: #fff;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 5px;
+
+    cursor: pointer;
+}
+
+.form button:hover {
+    background-color: #584ff5;
+    transition: 0.3s;
+}
+    </style>
+    
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>Crie sua Conta TecCorp</h2>
+        </div>
+        <form class="form" id="form">
+
+            <div class="form-control">
+
+                <label for="username" >Nome</label>
+                <input type="text" id="username">
+                <i class="img-success" ><img src="./images/success-icon.svg" alt=""></i>
+                <i class="img-error" ><img src="./images/error-icon.svg" alt=""></i>
+
+                <small>Error Message</small>
+
+            </div>
+
+            <div class="form-control">
+
+                <label>Email</label>
+                <input type="email" id="email">
+                <i class="img-success" ><img src="./images/success-icon.svg" alt=""></i>
+                <i class="img-error" ><img src="./images/error-icon.svg" alt=""></i>
+
+                <small>Error Message</small>
+
+            </div>
+
+            <div class="form-control">
+
+                <label>Senha</label>
+                <input type="password" id="password">
+                <i class="img-success" ><img src="./images/success-icon.svg" alt=""></i>
+                <i class="img-error" ><img src="./images/error-icon.svg" alt=""></i>
+
+                <small>Error Message</small>
+
+            </div>
+
+            <div class="form-control">
+
+                <label>Confirme sua senha</label>
+                <input type="password" id="password-two">
+                <i class="img-success" ><img src="./images/success-icon.svg" alt=""></i>
+                <i class="img-error" ><img src="./images/error-icon.svg" alt=""></i>
+
+                <small>Error Message</small>
+
+            </div>
+
+            <button type="submit" >ENVIAR</button>
+        </form>
+    </div>
+
+    <script>
+const form = document.getElementById('form')
+const username = document.getElementById('username')
+const email = document.getElementById('email')
+const password = document.getElementById('password')
+const passwordtwo = document.getElementById('password-two')
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    checkInputs()
+})
+
+function checkInputs() {
+
+    const usernameValue = username.value.trim()
+    const emailValue = email.value.trim()
+    const passwordValue = password.value.trim()
+    const passwordtwoValue = passwordtwo.value.trim()
+
+    if(usernameValue === '') {
+        // mostrar erro
+        // add classe
+        setErrorFor(username, 'Preencha esse campo')
+    } else {
+        // adicionar a classe de sucesso
+        setSuccessFor(username)
+    }
+
+    if(emailValue === '') {
+        // mostrar erro
+        // add classe
+        setErrorFor(email, 'Preencha esse campo')
+    } else if (!isEmail(emailValue)) {
+        setErrorFor(email, 'Email inválido')
+    } else {
+        // adicionar a classe de sucesso
+        setSuccessFor(email)
+    }
+   
+    if(passwordValue === '') {
+        // mostrar erro
+        // add classe
+        setErrorFor(password, 'Preencha esse campo')
+
+    } else if(passwordValue.length < 8) { 
+        setErrorFor(password, 'Senha deve ter mais que 8 caracteres')
+    } else {
+        // adicionar a classe de sucesso
+        setSuccessFor(password)
+    }
+
+    if(passwordtwoValue === '') {
+        // mostrar erro
+        // add classe
+        setErrorFor(passwordtwo, 'Preencha esse campo')
+
+    } else if(passwordValue !== passwordtwoValue) { 
+        setErrorFor(passwordtwo, 'Senhas não tão iguais')
+    } else {
+        // adicionar a classe de sucesso
+        setSuccessFor(passwordtwo)
+    }
+
+}
+
+function setErrorFor(input, message) {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector('small')
+
+    small.innerText = message
+
+    formControl.className = 'form-control error'
+}
+
+function setSuccessFor(input) {
+    const formControl = input.parentElement;
+
+    formControl.className = 'form-control success'
+}
+
+function isEmail(email) {
+    return /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(email)
+}
+    </script>
+    
+</body>
+</html>

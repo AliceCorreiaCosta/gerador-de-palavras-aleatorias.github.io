@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TecCorp Inc. - Localização</title>
+
+    <style>
+
+       
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: 'Roboto', sans-serif;
+
+            background-color: #f4f4f4;
+
+        }
+
+ 
+
+        h1, h2 {
+
+            font-family: 'Roboto Mono', monospace;
+
+        }
+
+ 
+
+        header {
+
+            background-color: black;
+
+            color: #fff;
+
+            text-align: center;
+
+            padding: 10px;
+
+        }
+
+ 
+
+        nav ul {
+
+            list-style-type: none;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+ 
+
+        nav li {
+
+            display: inline;
+
+            margin-right: 20px;
+
+        }
+
+ 
+
+        nav a {
+
+            text-decoration: none;
+
+            color: #333;
+
+        }
+
+ 
+
+        section {
+
+            padding: 20px;
+
+            margin: 20px;
+
+            background-color: #fff;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            font-family: 'Roboto', sans-serif;
+
+        }
+
+ 
+
+        footer {
+
+            text-align: center;
+
+            background-color: black;
+
+            color: #fff;
+
+            padding: 10px;
+
+        }
+
+ 
+
+       
+
+        #map {
+
+            height: 400px;
+
+            width: 100%;
+
+        }
+
+        .text {
+            background-color: rgb(203, 200, 200);
+        }
+        .h2 {
+    text-align: center;
+        }
+
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+
+   
+
+   
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+
+</head>
+
+<body >
+
+    <header>
+
+        <h1>TecCorp Inc.</h1>
+
+    </header>
+
+ 
+
+       <section id="localizacao" class="text">
+
+        <h2 class="h2">TecCorp ao Redor do Planeta</h2>
+<hr>
+        <p>A TecCorp Inc. é uma empresa que ultrapassa fronteiras. Com uma presença sólida em três continentes - Europa, América e Ásia - nossa empresa se estabeleceu como líder global no setor de tecnologia.</p>
+
+        <p>Nossas raízes começaram a crescer na movimentada Avenida Faria Lima em São Paulo, Brasil. Desde então, expandimos nossas operações e agora estamos orgulhosos de estar presente em diversos países ao redor do mundo.</p>
+
+        <p>Na Europa, nossos escritórios estão estrategicamente localizados em centros tecnológicos como Berlim, Alemanha, e Dublin, Irlanda. Isso nos permite colaborar com algumas das mentes mais brilhantes do continente e continuar a inovar em nossos produtos e serviços.</p>
+
+        <p>Na América do Norte, temos uma forte presença em locais-chave, como Silicon Valley, Califórnia, e Nova York. Essa proximidade com os principais polos tecnológicos nos permite estar na vanguarda das tendências e desenvolvimentos do setor.</p>
+
+        <p>Além disso, nossos escritórios na Ásia, em cidades como Tóquio, Japão, e Bangalore, Índia, nos permitem alcançar mercados em crescimento e atender às necessidades dos clientes em uma escala global.</p>
+
+        <p>A expansão internacional não é apenas sobre o tamanho, mas também sobre a diversidade e a capacidade de atrair talentos de todo o mundo. Nossos escritórios globais refletem essa diversidade, com equipes multidisciplinares trabalhando juntas para criar soluções tecnológicas inovadoras.</p>
+<hr>
+        <h2>TecCorp no Brasil</h2>
+
+        <h2>Av. Faria Lima 1826 São Paulo-SP</h2>
+
+       
+
+        <div id="map"></div>
+
+    </section>
+
+ 
+
+ 
+
+    <footer>
+
+        <p>&copy; 2023 TecCorp Inc. Todos os direitos reservados.</p>
+
+    </footer>
+
+ 
+
+   
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+ 
+
+    <script>
+
+        function initMap() {
+
+           
+
+            var map = L.map('map').setView([-23.576666, -46.688156], 15);
+
+ 
+
+           
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+                maxZoom: 19,
+
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
+            }).addTo(map);
+
+ 
+
+           
+
+            L.marker([-23.576666, -46.688156]).addTo(map)
+
+                .bindPopup('TecCorp Inc.<br>Localização: Avenida Faria Lima, São Paulo-SP.')
+
+                .openPopup();
+
+        }
+
+ 
+
+       
+
+        window.onload = function () {
+
+            initMap();
+
+        };
+
+    </script>
+
+</body>
+
+</html>

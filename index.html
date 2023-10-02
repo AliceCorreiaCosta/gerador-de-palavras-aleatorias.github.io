@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palavras aleatórias</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+     <script defer src="./validacoes.js"></script>
+</head>
+<body>
+    <header>
+        <div class="gfg">
+            <p><img src="img/logo_tech_corp.jpeg" alt="logo da empresa" class="logo">
+        </div>
+       <span class="material-symbols-outlined" id="burguer" onclick="clickMenu()">
+        menu
+        </span>
+       <menu id="itens">
+          <ul>
+            <li><a href="tecCorp/inicio.html">Início</a></li>
+            <li><a href="tecCorp/contato.html">Contato</a></li>
+            <li><a href="tecCorp/localizacao.html">Localização</a></li>
+            <li><a href="tecCorp/historia.html">História de nossa Empresa</a></li>
+          </ul>
+       </menu>
+    </header>
+    <main>
+        <section id="login" class="section">
+            <div id="formulario">
+                <h1 class="h1">🪬GERADOR DE PALAVRAS ALEATÓRIAS🪬</h1>
+                <br>
+                <form action="" method="post" class="form" id="form">
+                   <div class="campo">
+                      <label for="campo1"><strong> Nome Completo:</strong></label>
+                      <input type="text" name="nome" id="nome" placeholder="Digite seu nome..." class="inputs required" oninput="nameValidate()">
+                      <span class="span-required">Nome deve ter no mínimo 11 caracteres</span>
+                   </div>
+                   <div>
+                    <label for="campo2"><strong>Data de Nascimento:</strong></label>
+                    <input type="date" name="nascimento" id="nascimento" class="inputs required">
+                   </div>
+                   <div>
+                    <label for="campo3"><strong>Telefone:</strong></label>
+                    <input type="number" name="telefone" id="telefone" placeholder="Ex: 11999998888" class="inputs required" oninput="telefoneValidate()">
+                    <span class="span-required">Digite um número válido!</span>
+                   </div>
+                   <label for="campo4" class="cor"><strong>Para qual finalidade será o uso do palavra gerada? Pode escolher mais de uma opção:</strong></label>
+                   <br>
+                   <br>
+                   <div class="checkbox-container">
+                    <table>
+                        <tr>
+                          <td><input type="checkbox">Brincadeiras</td>
+                          <td><input type="checkbox">Música</td>
+                          <td><input type="checkbox">Redação</td>
+                          <td><input type="checkbox">Vocabulário</td>
+                          <td><input type="checkbox">Advinhação</td>
+                        </tr>
+                      </table>
+                   </div>
+                   <div>
+                    <label for="campo5"><strong>Você deseja receber ofertas exclusivas pelo seu WhatsApp?</strong></label>
+                    <table class="radio">
+                        <tr>
+                          <td>
+                            <input type="radio" id="opcao1" name="opcoes">
+                            <label for="opcao1">Sim</label>
+                          </td>
+                          <td>
+                            <input type="radio" id="opcao2" name="opcoes">
+                            <label for="opcao2">Não</label>
+                          </td>
+                        </tr>
+                      </table>
+                      <br>
+                   </div>
+                   <h2>E a palavra aleatória gerada é...</h2>
+                   <div id="resultado"></div>
+                   <div>
+                      <input type="reset" name="reset" value="Limpar" />
+                      <input id="botao" type="submit" value="Gerar palavra" class="botao" onclick="resposta(event)" >
+                   </div> 
+                </form>
+            </div>
+        </section>
+        <footer>
+            <div class="footer_copyright">
+                &#169
+            2023 TecCorp technology, Inc. Todos os direitos reservados.
+            </div>
+        </footer>
+    </main>
+    
+    <script src="js/script.js"></script>
+    <script>
+
+        //Essa função controla o clique do menu:
+        function clickMenu() {
+            if (itens.style.display == 'block') {
+                itens.style.display = 'none'
+            } else {
+                itens.style.display = 'block'
+            }
+        }
+    
+    </script>
+</body>
+</html> 
